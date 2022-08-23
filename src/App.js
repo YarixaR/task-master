@@ -8,18 +8,24 @@ import {useEffect, useState} from 'react';
 function App() {
 
   useEffect(() => {
-    fetch( "http://localhost:9292/users/1" )
+    fetch( "http://localhost:9292/tasks" )
     .then( resp => resp.json() )
     .then( data => setTasks( data ) )
   }, [])
 
-  const [ tasks, setTasks ] = useState({"tasks":[]})
+  const [ tasks, setTasks ] = useState([])
+  
+  // delete task card function
+  function deleteTask(id) {
+    const updatedTasks = tasks.filter((task) => task.id !== id);
+    setTasks(updatedTasks)
+  }
+  
 
   return (
     <div className="App">
       <Header />
-      
-      <Home  taskList = {tasks}/>
+      <Home  taskList = {tasks} deleteTask = {deleteTask} />
       <Footer />
     </div>
   );

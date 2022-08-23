@@ -4,14 +4,21 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 
 
-function TaskCard ({ task }) {
 
+function TaskCard ({ task, deleteTask }) {
+    
+    // delete task card DELETE request
+    function deleteTaskClick() {
+        fetch( `http://localhost:9292/tasks/${task.id}`, {method: 'DELETE'} )
+        
+        deleteTask(task.id)
+    }
 
     return(
 
 
         <div className= 'card'>
-
+            
             <CssBaseline />
                 <Container maxWidth="sm">
             <Box
@@ -22,12 +29,12 @@ function TaskCard ({ task }) {
                     m: 1,
                     width: 200,
                     height: 200,
-                    bgcolor: '#cfe8fc',
-                    height: '100vh' 
+                    bgcolor: '#cfe8fc', 
                     },
+                
                 }}>
 
-                <Paper elevation={3}>Title:{ task.title }
+                <Paper elevation={3}> Title:{ task.title }
                     <p className="task-description">Description:{ task.description }</p>
                     <p className="task-category">Category:{ task.category }</p> 
                 </Paper>

@@ -1,13 +1,12 @@
 import TaskCard from "./TaskCard"
 
-function Home({ taskList }) {
-    const {tasks} = taskList
-
+function Home({ taskList, deleteTask}) {
     
-    const taskItems = tasks.map(task => {
+    const taskItems = taskList.map(task => {
         return <TaskCard
             key = {task.id}
             task = {task}
+            deleteTask = {deleteTask}
         />
         
     })
