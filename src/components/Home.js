@@ -1,8 +1,20 @@
+import React from "react"
+import TaskCard from "./TaskCard"
 
-function Home() {
+function Home({ taskList }) {
+
+    const taskItems = taskList.map(task =>{
+        return <TaskCard
+        key = { task.id }
+        task = { task }
+        />
+    })
 
     return (
-        <div>Hello Body</div>
+        <div>
+            { taskItems }
+
+        </div>
     )
 }
 
