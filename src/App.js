@@ -3,6 +3,8 @@ import Header from './components/Header';
 import Home from './components/Home';
 import Footer from './components/Footer';
 import {useEffect, useState} from 'react';
+import { GlobalStyles } from '@mui/styled-engine';
+
 
 
 
@@ -32,6 +34,7 @@ function App() {
 
   return (
     <div className="App">
+
       <Header setSearchString = { setSearchString }/>
       <Home  taskList = {changeSearchString}/>
       <Footer />

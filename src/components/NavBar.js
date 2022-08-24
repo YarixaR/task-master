@@ -59,7 +59,7 @@ const Search = styled('div')(({ theme }) => ({
    
     return(
         <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" style={{backgroundColor:"#87bdd8" }}>
+        <AppBar position="static" style={{backgroundColor:"#000000" }}>
           <Toolbar>
             <IconButton
               size="large"
