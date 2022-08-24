@@ -12,8 +12,7 @@ import React,{useState} from 'react';
 
 
 
-
-function TaskCard ({ task }) {
+function TaskCard({ task, deleteTask }) {
 
     const [ clicked, setClicked ] = useState(true)
 
@@ -21,30 +20,25 @@ function TaskCard ({ task }) {
         setClicked(clicked => !clicked)
     }
 
-
-    const handleClick = () => {
-        console.info('You clicked the Chip.');
-      };
-    
-      const handleDelete = () => {
-        console.info('You clicked the delete icon.');
-      };
-
-
     const boxDefault = {
         padding: 1,
         m: 0
     };
 
+    // delete task card DELETE request
+    function deleteTaskClick() {
+        fetch(`http://localhost:9292/tasks/${task.id}`, { method: 'DELETE' })
+
+        deleteTask(task.id)
+    }
+  
     return(
-
-
         <div className= 'card'>
 
             <CssBaseline />
             <GlobalStyles
             styles={{
-                body: { backgroundColor: "#181c20" },
+                body: { backgroundColor: "white" },
             }}
             />
             <Grid item xs={3}>
@@ -79,8 +73,8 @@ function TaskCard ({ task }) {
                                 <Chip
                                 className="button"
                                 label="Trash"
-                                onClick={handleClick}
-                                onDelete={handleDelete}
+                                onClick={deleteTaskClick}
+                                
                                 deleteIcon={<DeleteIcon />}
                                 variant="outlined"
                                 />
