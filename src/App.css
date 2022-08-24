@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -24,6 +24,11 @@
   color: white;
 }
 
+p {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 15px
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -35,4 +40,14 @@
   to {
     transform: rotate(360deg);
   }
+} */
+*{
+  margin: 4px;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto';
+}
+
+body {
+  background-color: black;
 }
