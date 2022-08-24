@@ -16,6 +16,12 @@ function App() {
     .then( data => setTasks( data ) )
   }, [])
 
+  // delete task card function
+  function deleteTask(id) {
+    const updatedTasks = tasks.filter((task) => task.id !== id);
+    setTasks(updatedTasks)
+  }
+  
   const handleAddTask = (addedTask) => {
     setTasks([ ...tasks, addedTask])
   }
@@ -26,7 +32,9 @@ function App() {
       <Header />
       <Home  taskList = {tasks}
       handleAddTask={handleAddTask}
+      deleteTask = {deleteTask}
       />
+
       <Footer />
     </div>
   );

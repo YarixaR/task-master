@@ -1,14 +1,13 @@
 import TaskCard from "./TaskCard"
 import Form from "./Form"
 
-function Home({ taskList, handleAddTask }) {
-
-
-    
+function Home({ taskList, handleAddTask, deleteTask  }) {
+   
     const taskItems = taskList.map(task => {
         return <TaskCard
             key = {task.id}
             task = {task}
+            deleteTask = {deleteTask}
         />
         
     })
