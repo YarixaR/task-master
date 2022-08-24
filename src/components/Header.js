@@ -1,8 +1,11 @@
+import NavBar from "./NavBar";
 
-function Header() {
+function Header({ setSearchString }) {
 
     return (
-        <div><h1>TASK MASTER</h1></div>
+        <div>
+            <NavBar setSearchString = { setSearchString }/>
+        </div>
     )
 
 }
