@@ -6,6 +6,9 @@ import {useEffect, useState} from 'react';
 
 
 function App() {
+ 
+  // const [ newTask, setNewTask ] = useState([])
+  const [ tasks, setTasks ] = useState([])
 
   useEffect(() => {
     fetch( "http://localhost:9292/tasks" )
@@ -13,19 +16,25 @@ function App() {
     .then( data => setTasks( data ) )
   }, [])
 
-  const [ tasks, setTasks ] = useState([])
-  
   // delete task card function
   function deleteTask(id) {
     const updatedTasks = tasks.filter((task) => task.id !== id);
     setTasks(updatedTasks)
   }
   
-
+  const handleAddTask = (addedTask) => {
+    setTasks([ ...tasks, addedTask])
+  }
+  console.log(tasks)
+  
   return (
     <div className="App">
       <Header />
-      <Home  taskList = {tasks} deleteTask = {deleteTask} />
+      <Home  taskList = {tasks}
+      handleAddTask={handleAddTask}
+      deleteTask = {deleteTask}
+      />
+
       <Footer />
     </div>
   );
