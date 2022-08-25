@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
+import Avatar from '@mui/material/Avatar';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -61,15 +62,11 @@ const Search = styled('div')(({ theme }) => ({
         <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static" style={{backgroundColor:"#000000" }}>
           <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-            </IconButton>
+          <Avatar
+              alt="cute cat"
+              src="https://i.pinimg.com/564x/ef/62/9a/ef629a6a997f2b47e49aecb0c86b8af1.jpg"
+              sx={{ width: 56, height: 56 }}
+            />
             <Typography
               variant="h6"
               noWrap

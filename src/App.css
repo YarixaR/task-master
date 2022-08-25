@@ -42,8 +42,8 @@ p {
   }
 } */
 *{
-  margin: 4px;
-  padding: 0;
+  margin: .1rem;
+  padding: .1rem;
   box-sizing: border-box;
   font-family: 'Roboto';
 }
