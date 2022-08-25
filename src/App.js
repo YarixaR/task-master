@@ -59,6 +59,7 @@ function App() {
       />
       <Footer />
     </div>
+    
   );
 }
 

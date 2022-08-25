@@ -61,7 +61,7 @@ function TaskCard({ task, deleteTask, handleUpdateTask }) {
     const img1 = "url('https://pbs.twimg.com/media/EdXKPojUwAAIV9d.jpg:large')"
 
     return(
-        <div className= 'card'>
+        <div >
             <CssBaseline />
             <GlobalStyles
             styles={{
@@ -75,14 +75,15 @@ function TaskCard({ task, deleteTask, handleUpdateTask }) {
                 /> 
             ) : (
 
-            <Grid item xs={3}>
+            <Grid item xs={2} >
                 <Box
                 sx={{
+                    pl: "10rem",
                     display: 'grid',
                     flexWrap: 'wrap',
                     '& > :not(style)': {
                     m: 7,
-                    align: 'center',
+                    // align: 'center',
                     width: 250,
                     bgColor: 'white',
                     height: '120px',
