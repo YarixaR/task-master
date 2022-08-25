@@ -61,7 +61,7 @@ function Form({ handleAddTask }) {
                 <Container>
                     <Stack direction="row" spacing={2}>
 
-                        <Button color="error" variant="contained" sx={ { borderRadius: 28 } } > <PanoramaFishEyeIcon/> </Button>
+                        <Button style={{backgroundColor:"#ff5252"}} variant="contained" sx={ { borderRadius: 28 } } > red</Button>
                         <Button variant="contained" sx={ { borderRadius: 28 } } ></Button>
                         <Button variant="contained" sx={ { borderRadius: 28 } } ></Button>
                         <Button variant="contained" sx={ { borderRadius: 28 } } ></Button>
