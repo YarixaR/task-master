@@ -5,14 +5,16 @@ import { GlobalStyles } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import {useState} from 'react';
+import React,{useState} from 'react';
 import EditTask from './EditTask';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
+
 
 function TaskCard({ task, deleteTask, handleUpdateTask }) {
 
@@ -20,9 +22,11 @@ function TaskCard({ task, deleteTask, handleUpdateTask }) {
     const [isEditing, setIsEditing] = useState(false)
     const [color, setColor ] = useState('')
 
-    // const handleCard = () => {
-    //     setClicked(clicked => !clicked)
-    // }
+
+
+    const handleCard = () => {
+        setClicked(clicked => !clicked)
+    }
 
     const boxDefault = {
         padding: 1,
@@ -40,6 +44,7 @@ function TaskCard({ task, deleteTask, handleUpdateTask }) {
         setIsEditing(false);
         handleUpdateTask(updatedMessage);
       }
+ 
 
     //  test code 
     const [anchorEl, setAnchorEl] = useState(null);
@@ -52,7 +57,6 @@ function TaskCard({ task, deleteTask, handleUpdateTask }) {
         setColor(e.target.value)
         
     }
-
     // images
     const img1 = "url('https://pbs.twimg.com/media/EdXKPojUwAAIV9d.jpg:large')"
 
@@ -79,10 +83,9 @@ function TaskCard({ task, deleteTask, handleUpdateTask }) {
                     '& > :not(style)': {
                     m: 7,
                     align: 'center',
-                    width:"300px",
-                    height: "300px",
+                    width: 250,
                     bgColor: 'white',
-                    Height: '150px',
+                    height: '120px',
                     '&:hover': {
                         // backgroundColor: '#c9c4e0',
                         // opacity: [0.7, 0.9, 0.7]  
@@ -103,6 +106,7 @@ function TaskCard({ task, deleteTask, handleUpdateTask }) {
                             <Typography align='center' color='textPrimary' variant="h6">{ task.title }</Typography>
                             <Typography style={{wordWrap: "break-word"}} align='center'> {task.description}</Typography>
                             <Typography align='center'>{ clicked ? task.category : <strong>Task Done</strong> }</Typography>
+                            <Divider variant="middle" />
                                 <Stack
                                 direction="row"
                                 spacing={1}
@@ -114,8 +118,8 @@ function TaskCard({ task, deleteTask, handleUpdateTask }) {
                                     onClick={deleteTaskClick}
                                     variant="outlined"
                                     />
+                                   
                                 </Stack>
-
                             {/* Test code */}
                             <div>
                                 <Button
