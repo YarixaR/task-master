@@ -56,20 +56,6 @@ function Form({ handleAddTask }) {
     
     return(
         <div>
-            <div>
-                {/* this is being tested */}
-                <Container>
-                    <Stack direction="row" spacing={2}>
-
-                        <Button style={{backgroundColor:"#ff5252"}} variant="contained" sx={ { borderRadius: 28 } } > red</Button>
-                        <Button variant="contained" sx={ { borderRadius: 28 } } ></Button>
-                        <Button variant="contained" sx={ { borderRadius: 28 } } ></Button>
-                        <Button variant="contained" sx={ { borderRadius: 28 } } ></Button>
-                    </Stack>
-                    
-                </Container>
-            </div>
-
              <Container> 
                 <form onSubmit={handleSubmit}>
                     <Stack>
@@ -84,18 +70,16 @@ function Form({ handleAddTask }) {
                         />
                         <Input
                             placeholder="Write a task..."
-                            maxRows={Infinity}
+                            multiline
                             variant="standard"
                             name='description'
                             disableUnderline
                             onChange={(e) => setDescription(e.target.value)}
                         />
                     </Stack>
-                    <Box m={1}
-                        display="flex"
-                        justifyContent="flex-end">
-
-                        <FormControl>
+                    {/* Category box */}
+                    <Box>
+                        <FormControl >
                         <FormLabel >Category</FormLabel>
                         <RadioGroup
                             row
@@ -103,17 +87,22 @@ function Form({ handleAddTask }) {
                             name="row-radio-buttons-group"
                             value={category}
                             onChange={handleCategoryChange}>
-                            
                                 <FormControlLabel control={<Radio size="small" value="food" />} label="food" />
                                 <FormControlLabel control={<Radio size="small" value="park" />} label="park" />
                                 <FormControlLabel control={<Radio size="small" value="cook" />} label="cook" />
                                 <FormControlLabel control={<Radio size="small" value="other" />} label="Other" />
                             </RadioGroup>
                         </FormControl>
+                    </Box>
+
+                    {/* Submit button box */}
+                    <Box m={1}
+                        display="flex"
+                        justifyContent="flex-end">
                         <Button 
                             type='submit' 
-                            size="small"
-                            variant="text"
+                            size="medium"
+                            variant="outlined"
                             >
                                 submit
                         </Button>
