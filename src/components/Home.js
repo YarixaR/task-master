@@ -4,6 +4,7 @@ import Container from '@mui/material/Container';
 import { createTheme } from '@mui/material/styles';
 import blue from '@mui/material/colors/blue';
 import Form from "./Form"
+import Footer from "./Footer";
 
 const theme = createTheme({
   palette: {
@@ -13,13 +14,14 @@ const theme = createTheme({
 
 
 
-function Home({ taskList, handleAddTask, deleteTask  }) {
+function Home({ taskList, handleAddTask, deleteTask, handleUpdateTask  }) {
    
     const taskItems = taskList.map(task => {
         return <TaskCard
             key = {task.id}
             task = {task}
             deleteTask = {deleteTask}
+            handleUpdateTask = {handleUpdateTask}
         />
         
     })

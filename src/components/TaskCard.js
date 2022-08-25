@@ -2,19 +2,27 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import CssBaseline from '@mui/material/CssBaseline';
 import { GlobalStyles } from '@mui/material';
-// import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
-import DeleteIcon from '@mui/icons-material/Delete';
 import Typography from '@mui/material/Typography';
 import React,{useState} from 'react';
+import EditTask from './EditTask';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import Divider from '@mui/material/Divider';
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Fade from '@mui/material/Fade';
 
 
-
-function TaskCard({ task, deleteTask }) {
+function TaskCard({ task, deleteTask, handleUpdateTask }) {
 
     const [ clicked, setClicked ] = useState(true)
+    const [isEditing, setIsEditing] = useState(false)
+    const [color, setColor ] = useState('')
+
+
 
     const handleCard = () => {
         setClicked(clicked => !clicked)
@@ -27,61 +35,126 @@ function TaskCard({ task, deleteTask }) {
 
     // delete task card DELETE request
     function deleteTaskClick() {
-        fetch(`http://localhost:9292/tasks/${task.id}`, { method: 'DELETE' })
-
+        fetch(`http://localhost:9292/tasks/${task.id}`, 
+        { method: 'DELETE' })
         deleteTask(task.id)
     }
-  
-    return(
-        <div className= 'card'>
 
+    function handleTaskUpdate(updatedMessage) {
+        setIsEditing(false);
+        handleUpdateTask(updatedMessage);
+      }
+ 
+
+    //  test code 
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = (e) => {
+        setAnchorEl(null)
+        setColor(e.target.value)
+        
+    }
+    // images
+    const img1 = "url('https://pbs.twimg.com/media/EdXKPojUwAAIV9d.jpg:large')"
+
+    return(
+        <div >
             <CssBaseline />
             <GlobalStyles
             styles={{
                 body: { backgroundColor: "white" },
             }}
             />
-            <Grid item xs={3}>
+            {isEditing ? ( 
+                <EditTask 
+                    task = {task} 
+                    handleTaskUpdate = {handleTaskUpdate}
+                /> 
+            ) : (
+
+            <Grid item xs={2} >
                 <Box
                 sx={{
+                    pl: "10rem",
                     display: 'grid',
                     flexWrap: 'wrap',
                     '& > :not(style)': {
                     m: 7,
-                    align: 'center',
+                    // align: 'center',
                     width: 250,
-                    height: 200,
-                    bgcolor: 'white',
-                    height: '150px',
+                    bgColor: 'white',
+                    height: '120px',
                     '&:hover': {
-                        backgroundColor: '#c9c4e0',
-                        opacity: [0.7, 0.9, 0.7]  
+                        // backgroundColor: '#c9c4e0',
+                        // opacity: [0.7, 0.9, 0.7]  
                             },
                             },
                     }}>
-
-                    <Paper elevation={3} onClick={ handleCard }>
-                        <Typography align='center' color='textPrimary' variant="h6">{ task.title }</Typography>
-                        <Typography align='center'> {task.description}</Typography>
-                        <Typography align='center'>{ clicked ? task.category : <strong>Task Done</strong> }</Typography>
-                            <Stack
-                            direction="row"
-                            spacing={1}
-                            justifyContent='flex-end'
-                            sx={boxDefault}
+                    <div>
+                        <Paper elevation={3} style={{backgroundImage: color}}
+                            // onClick={ handleCard }
+                            onClick={handleUpdateTask}
+                        >   
+                            {/* editing test button */}
+                            <EditIcon
+                                onClick={() => setIsEditing((isEditing) => !isEditing)}
                             >
-                                <Chip
-                                className="button"
-                                label="Trash"
-                                onClick={deleteTaskClick}
-                                
-                                deleteIcon={<DeleteIcon />}
-                                variant="outlined"
-                                />
-                            </Stack>
-                    </Paper>
+                            </EditIcon>
+                            {/* Content of card */}
+                            <Typography align='center' color='textPrimary' variant="h6">{ task.title }</Typography>
+                            <Typography style={{wordWrap: "break-word"}} align='center'> {task.description}</Typography>
+                            <Typography align='center'>{ clicked ? task.category : <strong>Task Done</strong> }</Typography>
+                            <Divider variant="middle" />
+                                <Stack
+                                direction="row"
+                                spacing={1}
+                                justifyContent='flex-end'
+                                sx={boxDefault}
+                                >
+                                    <DeleteForeverIcon
+                                    className="button"
+                                    onClick={deleteTaskClick}
+                                    variant="outlined"
+                                    />
+                                   
+                                </Stack>
+                            {/* Test code */}
+                            <div>
+                                <Button
+                                    id="fade-button"
+                                    aria-controls={open ? 'fade-menu' : undefined}
+                                    aria-haspopup="true"
+                                    aria-expanded={open ? 'true' : undefined}
+                                    onClick={handleClick}
+                                >
+                                    theme
+                                </Button>
+                                <Menu
+                                    id="fade-menu"
+                                    MenuListProps={{
+                                    'aria-labelledby': 'fade-button',
+                                    }}
+                                    anchorEl={anchorEl}
+                                    open={open}
+                                    onClose={handleClose}
+                                    TransitionComponent={Fade}
+                                >
+                                    <MenuItem onClick={handleClose} ><Button value= {img1} style={{backgroundImage: img1 }} variant="contained" sx={ { borderRadius: 28 } }> red </Button></MenuItem>
+                                    <MenuItem onClick={handleClose}><Button style={{backgroundColor: "#e040fb" }} variant="contained" sx={ { borderRadius: 28 } } >color</Button></MenuItem>
+                                    <MenuItem onClick={handleClose}><Button style={{backgroundColor: "#90caf9" }} variant="contained" sx={ { borderRadius: 28 } } >color</Button></MenuItem>
+                                    <MenuItem onClick={handleClose}><Button style={{backgroundColor: "#90caf9" }} variant="contained" sx={ { borderRadius: 28 } } >color</Button></MenuItem>
+                                    <MenuItem onClick={handleClose}><Button style={{backgroundColor: "#90caf9" }} variant="contained" sx={ { borderRadius: 28 } } >color</Button></MenuItem>
+                                    <MenuItem onClick={handleClose}><Button style={{backgroundColor: "#90caf9" }} variant="contained" sx={ { borderRadius: 28 } } >color</Button></MenuItem>
+                                </Menu>
+                            </div>
+                        </Paper>
+                    </div>
                 </Box>
-            </Grid>  
+            </Grid>
+            )}
         </div>
     )
 }
