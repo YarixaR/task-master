@@ -1,7 +1,6 @@
 import './App.css';
 import Header from './components/Header';
 import Home from './components/Home';
-import Footer from './components/Footer';
 import {useEffect, useState} from 'react';
 // import { GlobalStyles } from '@mui/styled-engine';
 
@@ -57,7 +56,7 @@ function App() {
         deleteTask = {deleteTask}
         handleUpdateTask = {handleUpdateTask}
       />
-      <Footer />
+     
     </div>
     
   );

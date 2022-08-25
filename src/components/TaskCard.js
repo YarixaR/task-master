@@ -14,19 +14,16 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
+import FormLabel from '@mui/material/FormLabel';
+import { textAlign } from '@mui/system';
 
 
 function TaskCard({ task, deleteTask, handleUpdateTask }) {
 
-    const [ clicked, setClicked ] = useState(true)
+    
     const [isEditing, setIsEditing] = useState(false)
-    const [color, setColor ] = useState('')
+    const [isColor, setIsColor ] = useState('')
 
-
-
-    const handleCard = () => {
-        setClicked(clicked => !clicked)
-    }
 
     const boxDefault = {
         padding: 1,
@@ -54,18 +51,24 @@ function TaskCard({ task, deleteTask, handleUpdateTask }) {
     };
     const handleClose = (e) => {
         setAnchorEl(null)
-        setColor(e.target.value)
+        setIsColor(e.target.value)
         
     }
     // images
-    const img1 = "url('https://pbs.twimg.com/media/EdXKPojUwAAIV9d.jpg:large')"
+     const img1 = "url('https://pbs.twimg.com/media/EdXKPojUwAAIV9d.jpg:large')"
+     const img2 = "url('https://i.pinimg.com/564x/0e/21/c7/0e21c7815b48ba573224a884f43226a4.jpg')"
+     const img3 = "url('https://i.pinimg.com/564x/fc/3b/7e/fc3b7e8a3de6b383e96521883887fde3.jpg')"
+     const img4 = "url('https://i.pinimg.com/564x/7a/60/40/7a6040da459f8e7eac769860dc140da0.jpg')"
+     const img5 = "url('https://i.pinimg.com/564x/4b/e5/ba/4be5baab26da8eb93a8f5d75e74269aa.jpg')"
+ 
 
     return(
         <div >
             <CssBaseline />
             <GlobalStyles
             styles={{
-                body: { backgroundColor: "white" },
+                body: { backgroundColor: "white"
+             },
             }}
             />
             {isEditing ? ( 
@@ -94,7 +97,7 @@ function TaskCard({ task, deleteTask, handleUpdateTask }) {
                             },
                     }}>
                     <div>
-                        <Paper elevation={3} style={{backgroundImage: color}}
+                    <Paper elevation={3} style={{backgroundImage: isColor, backgroundColor: isColor, backgroundRepeat: "no-repeat", backgroundSize: "cover" }}
                             // onClick={ handleCard }
                             onClick={handleUpdateTask}
                         >   
@@ -104,10 +107,10 @@ function TaskCard({ task, deleteTask, handleUpdateTask }) {
                             >
                             </EditIcon>
                             {/* Content of card */}
-                            <Typography align='center' color='textPrimary' variant="h6">{ task.title }</Typography>
-                            <Typography style={{wordWrap: "break-word"}} align='center'> {task.description}</Typography>
-                            <Typography align='center'>{ clicked ? task.category : <strong>Task Done</strong> }</Typography>
+                            <Typography align='center' color='textPrimary' variant="h4">{ task.title }</Typography>
+                            <Typography style={{wordWrap: "break-word",}} align='center' variant="h6"> {task.description}</Typography>
                             <Divider variant="middle" />
+                            <FormLabel sx={{pl: "100px"}}>{task.category}</FormLabel>
                                 <Stack
                                 direction="row"
                                 spacing={1}
@@ -119,7 +122,6 @@ function TaskCard({ task, deleteTask, handleUpdateTask }) {
                                     onClick={deleteTaskClick}
                                     variant="outlined"
                                     />
-                                   
                                 </Stack>
                             {/* Test code */}
                             <div>
@@ -142,12 +144,11 @@ function TaskCard({ task, deleteTask, handleUpdateTask }) {
                                     onClose={handleClose}
                                     TransitionComponent={Fade}
                                 >
-                                    <MenuItem onClick={handleClose} ><Button value= {img1} style={{backgroundImage: img1 }} variant="contained" sx={ { borderRadius: 28 } }> red </Button></MenuItem>
-                                    <MenuItem onClick={handleClose}><Button style={{backgroundColor: "#e040fb" }} variant="contained" sx={ { borderRadius: 28 } } >color</Button></MenuItem>
-                                    <MenuItem onClick={handleClose}><Button style={{backgroundColor: "#90caf9" }} variant="contained" sx={ { borderRadius: 28 } } >color</Button></MenuItem>
-                                    <MenuItem onClick={handleClose}><Button style={{backgroundColor: "#90caf9" }} variant="contained" sx={ { borderRadius: 28 } } >color</Button></MenuItem>
-                                    <MenuItem onClick={handleClose}><Button style={{backgroundColor: "#90caf9" }} variant="contained" sx={ { borderRadius: 28 } } >color</Button></MenuItem>
-                                    <MenuItem onClick={handleClose}><Button style={{backgroundColor: "#90caf9" }} variant="contained" sx={ { borderRadius: 28 } } >color</Button></MenuItem>
+                                    <MenuItem onClick={handleClose}><Button value= {img1} style={{backgroundImage: img1 }} variant="contained" sx={ { borderRadius: 28 } }>Party</Button></MenuItem>
+                                    <MenuItem onClick={handleClose}><Button value= {img2} style={{backgroundImage: img2 }} variant="contained" sx={ { borderRadius: 28 } } >Cloud</Button></MenuItem>
+                                    <MenuItem onClick={handleClose}><Button value= {img3} style={{backgroundImage: img3 }} variant="contained" sx={ { borderRadius: 28 } } >Moon</Button></MenuItem>
+                                    <MenuItem onClick={handleClose}><Button value= {img4} style={{backgroundImage: img4 }} variant="contained" sx={ { borderRadius: 28} } >Blue</Button></MenuItem>
+                                    <MenuItem onClick={handleClose}><Button value= {img5} style={{backgroundImage: img5 }} variant="contained" sx={ { borderRadius: 28} } >Blue</Button></MenuItem>
                                 </Menu>
                             </div>
                         </Paper>

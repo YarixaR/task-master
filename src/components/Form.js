@@ -87,10 +87,10 @@ function Form({ handleAddTask }) {
                             name="row-radio-buttons-group"
                             value={category}
                             onChange={handleCategoryChange}>
-                                <FormControlLabel control={<Radio size="small" value="food" />} label="food" />
-                                <FormControlLabel control={<Radio size="small" value="park" />} label="park" />
-                                <FormControlLabel control={<Radio size="small" value="cook" />} label="cook" />
-                                <FormControlLabel control={<Radio size="small" value="other" />} label="Other" />
+                                <FormControlLabel control={<Radio size="small" value="House" />} label="House" />
+                                <FormControlLabel control={<Radio size="small" value="Park" />} label="Park" />
+                                <FormControlLabel control={<Radio size="small" value="Groceries" />} label="Groceries" />
+                                <FormControlLabel control={<Radio size="small" value="Pet" />} label="Pet" />
                             </RadioGroup>
                         </FormControl>
                     </Box>
