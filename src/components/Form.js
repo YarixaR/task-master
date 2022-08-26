@@ -22,10 +22,10 @@ const Container = styled(Box)`
     padding: 10px 15px;
 `
 
-function Form({ handleAddTask }) {
+function Form({ handleAddTask, user }) {
     const [ content, setContent ] = useState('')
     const [ description, setDescription ] = useState('')
-    const [ category, setCategory ] = useState('');
+    const [ category, setCategory ] = useState('food');
 
     function handleSubmit(e) {
         e.preventDefault() 
@@ -36,7 +36,7 @@ function Form({ handleAddTask }) {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({  
-                user_id: '',
+                user_id: user,
                 title: content,
                 description: description,
                 category: category

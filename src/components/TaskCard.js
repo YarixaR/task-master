@@ -16,7 +16,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
 
 
-function TaskCard({ task, deleteTask, handleUpdateTask }) {
+function TaskCard({ task, deleteTask, handleUpdateTask, user }) {
 
     const [ clicked, setClicked ] = useState(true)
     const [isEditing, setIsEditing] = useState(false)
@@ -24,9 +24,9 @@ function TaskCard({ task, deleteTask, handleUpdateTask }) {
 
 
 
-    const handleCard = () => {
-        setClicked(clicked => !clicked)
-    }
+    // const handleCard = () => {
+    //     setClicked(clicked => !clicked)
+    // }
 
     const boxDefault = {
         padding: 1,
@@ -70,6 +70,7 @@ function TaskCard({ task, deleteTask, handleUpdateTask }) {
             />
             {isEditing ? ( 
                 <EditTask 
+                    user = {user}
                     task = {task} 
                     handleTaskUpdate = {handleTaskUpdate}
                 /> 
@@ -105,7 +106,7 @@ function TaskCard({ task, deleteTask, handleUpdateTask }) {
                             </EditIcon>
                             {/* Content of card */}
                             <Typography align='center' color='textPrimary' variant="h6">{ task.title }</Typography>
-                            <Typography style={{wordWrap: "break-word"}} align='center'> {task.description}</Typography>
+                            <Typography style={{wordWrap: "break-word", color: "#3949ab"}} align='center'> {task.description}</Typography>
                             <Typography align='center'>{ clicked ? task.category : <strong>Task Done</strong> }</Typography>
                             <Divider variant="middle" />
                                 <Stack

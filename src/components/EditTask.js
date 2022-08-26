@@ -16,7 +16,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 
-function EditTask({ task, handleTaskUpdate }) {
+function EditTask({ task, handleTaskUpdate, user }) {
     const { id, title, description } = task
     const [ titleUpdate, setTitleUpdate ] = useState(title)
     const [ descriptionUpdate, setDescriptionUpdate] = useState(description)
@@ -44,7 +44,7 @@ function EditTask({ task, handleTaskUpdate }) {
                 "Content-type": "application/json",
             },
             body: JSON.stringify({
-                user_id: '',
+                user_id: user,
                 id: id,
                 title: titleUpdate,
                 description: descriptionUpdate 
@@ -69,7 +69,6 @@ function EditTask({ task, handleTaskUpdate }) {
             }}
             >
             
-
             <Item elevation={3} >{
                 <div>
                     <Input
