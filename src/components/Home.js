@@ -12,8 +12,6 @@ const theme = createTheme({
   },
 });   
 
-
-
 function Home({ taskList, handleAddTask, deleteTask, handleUpdateTask, user  }) {
    
     const taskItems = taskList.map(task => {
@@ -24,7 +22,6 @@ function Home({ taskList, handleAddTask, deleteTask, handleUpdateTask, user  }) 
             deleteTask = {deleteTask}
             handleUpdateTask = {handleUpdateTask}
         />
-        
     })
 
     return (

@@ -15,15 +15,12 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
 import FormLabel from '@mui/material/FormLabel';
-import { textAlign } from '@mui/system';
 
 
 function TaskCard({ task, deleteTask, handleUpdateTask, user }) {
 
-    
     const [isEditing, setIsEditing] = useState(false)
     const [isColor, setIsColor ] = useState('')
-
 
     const boxDefault = {
         padding: 1,
@@ -98,7 +95,12 @@ function TaskCard({ task, deleteTask, handleUpdateTask, user }) {
                             },
                     }}>
                     <div>
-                    <Paper elevation={3} style={{backgroundImage: isColor, backgroundColor: isColor, backgroundRepeat: "no-repeat", backgroundSize: "cover" }}
+                        <Paper 
+                            elevation={3} 
+                            style={{backgroundImage: isColor,
+                            backgroundColor: isColor,
+                            backgroundRepeat: "no-repeat",
+                            backgroundSize: "cover" }}
                             // onClick={ handleCard }
                             onClick={handleUpdateTask}
                         >   
@@ -114,18 +116,18 @@ function TaskCard({ task, deleteTask, handleUpdateTask, user }) {
 
                             <Divider variant="middle" />
                             <FormLabel sx={{pl: "100px"}}>{task.category}</FormLabel>
-                                <Stack
+                            <Stack
                                 direction="row"
                                 spacing={1}
                                 justifyContent='flex-end'
                                 sx={boxDefault}
-                                >
-                                    <DeleteForeverIcon
-                                    className="button"
-                                    onClick={deleteTaskClick}
-                                    variant="outlined"
-                                    />
-                                </Stack>
+                            >
+                            <DeleteForeverIcon
+                                className="button"
+                                onClick={deleteTaskClick}
+                                variant="outlined"
+                            />
+                            </Stack>
                             {/* Test code */}
                             <div>
                                 <Button
