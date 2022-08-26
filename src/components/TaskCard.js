@@ -18,7 +18,7 @@ import FormLabel from '@mui/material/FormLabel';
 import { textAlign } from '@mui/system';
 
 
-function TaskCard({ task, deleteTask, handleUpdateTask }) {
+function TaskCard({ task, deleteTask, handleUpdateTask, user }) {
 
     
     const [isEditing, setIsEditing] = useState(false)
@@ -73,6 +73,7 @@ function TaskCard({ task, deleteTask, handleUpdateTask }) {
             />
             {isEditing ? ( 
                 <EditTask 
+                    user = {user}
                     task = {task} 
                     handleTaskUpdate = {handleTaskUpdate}
                 /> 
@@ -107,8 +108,10 @@ function TaskCard({ task, deleteTask, handleUpdateTask }) {
                             >
                             </EditIcon>
                             {/* Content of card */}
+
                             <Typography align='center' color='textPrimary' variant="h4">{ task.title }</Typography>
                             <Typography style={{wordWrap: "break-word",}} align='center' variant="h6"> {task.description}</Typography>
+
                             <Divider variant="middle" />
                             <FormLabel sx={{pl: "100px"}}>{task.category}</FormLabel>
                                 <Stack

@@ -14,10 +14,11 @@ const theme = createTheme({
 
 
 
-function Home({ taskList, handleAddTask, deleteTask, handleUpdateTask  }) {
+function Home({ taskList, handleAddTask, deleteTask, handleUpdateTask, user  }) {
    
     const taskItems = taskList.map(task => {
         return <TaskCard
+            user={user}
             key = {task.id}
             task = {task}
             deleteTask = {deleteTask}
@@ -29,6 +30,7 @@ function Home({ taskList, handleAddTask, deleteTask, handleUpdateTask  }) {
     return (
         <div>
             <Form 
+                user={user}
                 handleAddTask={handleAddTask}
             />
             <Container>
