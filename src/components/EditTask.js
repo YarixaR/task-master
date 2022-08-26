@@ -16,10 +16,12 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 
-function EditTask({ task, handleTaskUpdate }) {
-    const { id, title, description } = task
+
+function EditTask({ task, handleTaskUpdate, user }) {
+    const { id, title, description, category } = task
     const [ titleUpdate, setTitleUpdate ] = useState(title)
     const [ descriptionUpdate, setDescriptionUpdate] = useState(description)
+    const [ categoryUpdate, setCategoryUpdate] = useState(category)
 
 
     // const [anchorEl, setAnchorEl] = useState(null);
@@ -44,10 +46,11 @@ function EditTask({ task, handleTaskUpdate }) {
                 "Content-type": "application/json",
             },
             body: JSON.stringify({
-                user_id: '',
+                user_id: user,
                 id: id,
                 title: titleUpdate,
-                description: descriptionUpdate 
+                description: descriptionUpdate,
+                category: categoryUpdate 
             }),
             })    
                 .then((resp) => resp.json())
@@ -69,7 +72,6 @@ function EditTask({ task, handleTaskUpdate }) {
             }}
             >
             
-
             <Item elevation={3} >{
                 <div>
                     <Input
@@ -85,6 +87,13 @@ function EditTask({ task, handleTaskUpdate }) {
                         name = "description"
                         value={descriptionUpdate}
                         onChange = {(e) => setDescriptionUpdate(e.target.value)}
+                    />
+                    <Input
+                        disableUnderline
+                        type="text"
+                        name = "Category"
+                        value={categoryUpdate}
+                        onChange = {(e) => setCategoryUpdate(e.target.value)}
                     />
                     <Input type="submit" value="save"/>
                 </div>

@@ -1,10 +1,11 @@
 import NavBar from "./NavBar";
 
-function Header({ setSearchString }) {
+function Header({ setSearchString, setUser }) {
 
     return (
         <div>
-            <NavBar setSearchString = { setSearchString }/>
+            <NavBar setSearchString = { setSearchString }
+            setUser={setUser} />
         </div>
     )
 
