@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, IconButton, Input } from '@mui/material';
+import { Box, Input } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
@@ -8,7 +8,6 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import PanoramaFishEyeIcon from '@mui/icons-material/PanoramaFishEye';
 
 const Container = styled(Box)`
     display: flex;
@@ -25,7 +24,7 @@ const Container = styled(Box)`
 function Form({ handleAddTask, user }) {
     const [ content, setContent ] = useState('')
     const [ description, setDescription ] = useState('')
-    const [ category, setCategory ] = useState('food');
+    const [ category, setCategory ] = useState('House');
 
     function handleSubmit(e) {
         e.preventDefault() 

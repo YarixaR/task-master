@@ -2,7 +2,6 @@ import { useState } from "react"
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles'
-import Popover from '@mui/material/Popover';
 import { Input } from '@mui/material';
 
 
@@ -15,27 +14,12 @@ const Item = styled(Paper)(({ theme }) => ({
   }));
 
 
-
-
 function EditTask({ task, handleTaskUpdate, user }) {
     const { id, title, description, category } = task
     const [ titleUpdate, setTitleUpdate ] = useState(title)
     const [ descriptionUpdate, setDescriptionUpdate] = useState(description)
     const [ categoryUpdate, setCategoryUpdate] = useState(category)
 
-
-    // const [anchorEl, setAnchorEl] = useState(null);
-
-    // const handleClick = (event) => {
-    //     setAnchorEl(event.currentTarget);
-    // };
-
-    // const handleClose = () => {
-    //     setAnchorEl(null);
-    // };
-
-    // const open = Boolean(anchorEl);
-    // const di = open ? 'simple-popover' : undefined;
 
     function handleFormSubmit(e) {
         e.preventDefault()
